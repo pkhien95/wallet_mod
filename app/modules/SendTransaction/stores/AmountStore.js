@@ -16,11 +16,12 @@ class AmountStore {
   selectedCoinModal = ''
 
   @computed get amountCrypto() {
-    const { selectedWallet, selectedToken } = MainStore.appState
+    const { selectedWallet, selectedToken } = MainStore.appState;
+    const bigNum = new BigNumber(selectedToken.balance);
     if (selectedWallet.type === 'bitcoin') return (selectedWallet.balance.dividedBy(new BigNumber('1.0e+8')))
     return MainStore.sendTransaction.isToken
       ? (selectedToken.balance.dividedBy(new BigNumber(`1.0e+${selectedToken.decimals}`)))
-      : (selectedWallet.balance.dividedBy(new BigNumber('1.0e+18'))) // Big Num
+      : (bigNum.dividedBy(new BigNumber('1.0e+18'))) // Big Num
   }
 
   @computed get rate() {

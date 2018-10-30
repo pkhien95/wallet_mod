@@ -100,18 +100,18 @@ export default class TransactionListScreen extends Component {
           action={this.goBack}
         />
         <FlatList
-          data={transactions}
-          contentContainerStyle={[transactions.length ? { width } : { flexGrow: 1, justifyContent: 'center' }]}
+          data={transactions ? transactions : []}
+          contentContainerStyle={[transactions && transactions.length ? { width } : { flexGrow: 1, justifyContent: 'center' }]}
           ListEmptyComponent={this._renderEmptyList(selectedToken)}
           showsVerticalScrollIndicator={false}
           keyExtractor={(item, index) => `${item.hash}-${item.from}-${index}`}
-          refreshing={isRefreshing}
+          refreshing={false}
           onRefresh={this.onRefresh}
           onEndReached={this.onEndReached}
           onEndReachedThreshold={0.5}
           renderItem={this._renderItem}
         />
-        {successTransactions.length === 0 && isLoading && <Spinner />}
+        {/*{successTransactions.length === 0 && isLoading && <Spinner />}*/}
       </View>
     )
   }

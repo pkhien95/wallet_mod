@@ -45,8 +45,9 @@ export default class TokenItem extends Component {
 
   _renderImageIcon(_, symbol) {
     const firstCharacter = symbol.toUpperCase().substring(0, 1)
-    const iconImage = { uri: Helper.getIconCoin(symbol), cache: 'force-cache' }
-    const { imageNotFound } = this.state
+    const iconImage = { uri: "https://irobottrade.com/assets1/img/token.png", cache: 'force-cache' }
+    // const { imageNotFound } = this.state;
+	  const imageNotFound = false;
     if (symbol === 'ETH') {
       return (
         <Image
@@ -57,26 +58,11 @@ export default class TokenItem extends Component {
       )
     }
     return (
-      <View style={styles.iconField}>
-        <View
-          style={[
-            styles.iconField,
-            { backgroundColor: '#0E1428', position: 'absolute', opacity: imageNotFound ? 1 : 0 }
-          ]}
-        >
-          <Text style={styles.iconText}>{firstCharacter}</Text>
-        </View>
-        <Image
-          source={iconImage}
-          style={{
-            width: 50,
-            height: 50,
-            position: 'absolute',
-            opacity: imageNotFound ? 0 : 1
-          }}
-          onLoad={() => this.setState({ imageNotFound: false })}
-        />
-      </View>
+	    <Image
+		    source={iconImage}
+		    style={styles.image}
+		    resizeMode="contain"
+	    />
     )
   }
 

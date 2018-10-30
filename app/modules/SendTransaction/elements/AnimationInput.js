@@ -90,9 +90,9 @@ export default class AnimationInput extends Component {
           style={{ justifyContent: 'center', flexDirection: 'row', height: 60 }}
         >
           <View>
-            <Text style={[styles.subTitle, { color: data.length == 0 ? AppStyle.greyTextInput : AppStyle.secondaryTextColor }]}>
-              {this.props.subData}
-            </Text>
+            {/*<Text style={[styles.subTitle, { color: data.length == 0 ? AppStyle.greyTextInput : AppStyle.secondaryTextColor }]}>*/}
+              {/*{subData}*/}
+            {/*</Text>*/}
             {warningTitle || warningFee}
           </View>
           <TouchableOpacity

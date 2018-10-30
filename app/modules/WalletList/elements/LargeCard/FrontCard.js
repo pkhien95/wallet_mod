@@ -85,7 +85,7 @@ export default class FrontCard extends Component {
       onPress, onLongPress, style, onAddPrivateKey, onBackup, onAlertBackup, onCopy
     } = this.props
     const {
-      title, importType, totalBalanceETH, totalBalanceDollar, isFetchingBalance, isHideValue, type
+      title, importType, totalBalanceETH, totalBalanceDollar, isFetchingBalance, isHideValue, type, balance
     } = this.wallet
 
     const isHide = isHideValue
@@ -106,9 +106,9 @@ export default class FrontCard extends Component {
       </TouchableOpacity>
     )
 
-    const balanceSecret = !isHide ? `${Helper.formatETH(totalBalanceETH.toString(10))} ${this.symbol}` : constant.SECRET_WORK
+    const balanceSecret = !isHide ? `${balance} IRB` : constant.SECRET_WORK
     const balanceUSDSecret = !isHide
-      ? `$${Helper.formatUSD(totalBalanceDollar.toString(10))}`
+      ? `$${balance}`
       : constant.SECRET_WORK
     return (
       <TouchableWithoutFeedback
@@ -154,11 +154,12 @@ export default class FrontCard extends Component {
             style={
               {
                 marginTop: cardHeight * 0.07,
-                width: type === 'ethereum' ? cardHeight * 0.31 * 0.63 : cardHeight * 0.42 * 0.63,
-                height: type === 'ethereum' ? cardHeight * 0.31 : cardHeight * 0.35
+                width: 283,
+                height: 128
               }
             }
-            source={type === 'ethereum' ? images.imgCardETH : images.imgCardBTC}
+            source={{uri: "https://irobottrade.com/assets1/img/token.png", cache: 'force-cache'}}
+            resizeMode={'cover'}
           />
           <Text style={[styles.balance]}>{balanceSecret}</Text>
           <Text style={[styles.balanceUSD, { marginBottom: 6 }]}>{balanceUSDSecret}</Text>

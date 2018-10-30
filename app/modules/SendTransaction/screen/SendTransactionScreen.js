@@ -107,7 +107,7 @@ export default class SendTransactionScreen extends Component {
           onPress={this._onOpenModal}
         >
           <Text style={styles.walletName}>{this.amountStore.walletName}:</Text>
-          <Text style={styles.headerBalance}>{this.amountStore.amountHeaderString}</Text>
+          {/*<Text style={styles.headerBalance}>{this.amountStore.amountHeaderString}</Text>*/}
         </TouchableOpacity>
       </View>
     )
@@ -119,7 +119,7 @@ export default class SendTransactionScreen extends Component {
         <AnimationInput
           ref={ref => (this.input = ref)}
           data={data}
-          postfix={postfix}
+          postfix={"IRB"}
           subData={subData}
         />
       </View>
@@ -130,7 +130,7 @@ export default class SendTransactionScreen extends Component {
     return (
       <TouchableOpacity
         style={styles.sendTo}
-        disabled={!this.amountStore.checkButtonEnable}
+        // disabled={!this.amountStore.checkButtonEnable}
         onPress={this._onSendPress}
       >
         <Text style={[styles.sendText, { color: this.amountStore.checkButtonEnable ? AppStyle.mainColor : AppStyle.greyTextInput }]}>
@@ -147,7 +147,7 @@ export default class SendTransactionScreen extends Component {
       >
         <View style={styles.viewContainer}>
           {this.renderHeader()}
-          {this.renderInput(this.amountStore.getAmountText, this.amountStore.amountSubTextString, this.amountStore.postfix)}
+          {this.renderInput(this.amountStore.getAmountText, this.amountStore.getAmountText, this.amountStore.postfix)}
           <View>
             <KeyBoard />
             {this.renderSendBtn()}
